@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flask-SocketIO Example</title>
+    <script src="https://cdn.socket.io/4.3.2/socket.io.min.js"></script>
+    <script>
+        var socket = io.connect('http://localhost:5000');
+
+        socket.on('message', function(message) {
+            // Handle the received message
+            console.log('Received message:', message);
+        });
+
+        function sendMessage() {
+            var message = document.getElementById('messageInput').value;
+            socket.emit('message', message);
+        }
+    </script>
+</head>
+<body>
+    <input type="text" id="messageInput" placeholder="Enter a message">
+    <button onclick="sendMessage()">Send</button>
+</body>
+</html>
